@@ -26,7 +26,7 @@
             </nz-form-control>
           </nz-form-item>
           <nz-form-item>
-            <nz-form-label [nzSpan]="6" nzFor="address">CVV</nz-form-label>
+            <nz-form-label [nzSpan]="6" nzFor="address">Address</nz-form-label>
             <nz-form-control [nzSpan]="14">
               <input nz-input name="address" type="text" ngModel required />
             </nz-form-control>
@@ -34,13 +34,13 @@
           <nz-form-item>
             <nz-form-label [nzSpan]="6" nzFor="card">Card Number</nz-form-label>
             <nz-form-control [nzSpan]="14">
-              <input nz-input name="card" type="number" ngModel required />
+              <input nz-input name="card" type="number" ngModel required minlength="12" maxlength="12"/>
             </nz-form-control>
           </nz-form-item>
           <nz-form-item>
-            <nz-form-label [nzSpan]="6" nzFor="card">CVV</nz-form-label>
+            <nz-form-label [nzSpan]="6" nzFor="cvv">CVV</nz-form-label>
             <nz-form-control [nzSpan]="14">
-              <input nz-input name="cvv" type="text" ngModel minlength="3" maxlength="3" required />
+              <input nz-input name="cvv" type="number" ngModel minlength="3" maxlength="3" required />
             </nz-form-control>
           </nz-form-item>
         </form>

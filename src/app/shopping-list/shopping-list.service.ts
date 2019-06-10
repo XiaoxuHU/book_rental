@@ -45,7 +45,7 @@ export class ShoppingListService {
                 = Math.floor((bookRental.expire.getTime() - cur)/86400000) + 1;
             total = total + rentalDays * (+bookRental.book.price);
         }
-        return total;
+        return +total.toFixed(2);
     }
 
     updateTotalPrice():void {
@@ -56,6 +56,7 @@ export class ShoppingListService {
                 = Math.floor((bookRental.expire.getTime() - cur)/86400000) + 1;
            totalCost = totalCost + rentalDays * (+bookRental.book.price);
         }
+        totalCost = +totalCost.toFixed(2);
         this.totalCostChange.next(totalCost);
     }
 }
