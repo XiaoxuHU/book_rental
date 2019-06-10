@@ -1,0 +1,6 @@
+<nz-card [nzTitle]="book.name" [nzCover]="coverTemplate" (click)="clickHandler(book.id)">
+    <p>{{book.author}}</p>
+  </nz-card>
+<ng-template #coverTemplate>
+  <img style="height:350px;" [src]="book.imagePath"/>
+</ng-template>

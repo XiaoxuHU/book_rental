@@ -1,0 +1,10 @@
+<div class="container">
+  <h2 style="align-content: center">{{sumRate}} customers review</h2>
+  <div>
+    <div *ngFor="let percent of ratesPercent;let i = index">
+      <nz-rate [ngModel]="i + 1"  nzDisabled></nz-rate>
+      <nz-progress [nzPercent]=percent></nz-progress>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,9 @@
+<div style="padding:30px;">
+  <div *ngIf="notFound">Not Found</div>
+  <div nz-row nzGutter="50" >
+    <div nz-col nzSpan="6" *ngFor="let book of books" style="margin:20px 0px" >
+      <app-book-card [book]="book"></app-book-card>
+    </div>
+  </div>
+</div>
+
