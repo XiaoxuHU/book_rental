@@ -1,53 +1,56 @@
 <div style="padding:30px">
-    <h1 style="text-align: center">Shopping List</h1>
-    <div nz-row nzGutter="50" >
-        <div nz-col nzSpan="6" *ngFor="let bookRental of bookRentals;let i = index" style="margin:20px 0px" >
-            <nz-card nzHoverable style="width:240px" [nzCover]="coverTemplate" [nzActions]="[actionEdit,actionDelete]">
-              <nz-card-meta [nzTitle]="bookRental.book.name" [nzDescription]="bookRental.expire | date"></nz-card-meta>
-            </nz-card>
-            <ng-template #coverTemplate>
-              <img [src]="bookRental.book.imagePath" height="350px"/>
-            </ng-template>
-            <ng-template #actionDelete>
-              <button nz-button nzType="primary" (click)="deleteBookRental(i)">Delete</button>
-            </ng-template>
-            <ng-template #actionEdit>
-              <app-date-picker [book]="bookRental.book" content="Edit"></app-date-picker>
-            </ng-template>
-        </div>
+  <div style="margin: 0px auto;text-align: center">
+    <h1>Shopping List</h1>
+    <button nz-button nzType="primary" (click)="showModal()">Check Out</button>
+  </div>
+  <!-- grid display for books in shopping cart -->
+  <div nz-row nzGutter="50">
+    <div nz-col nzSpan="6" *ngFor="let bookRental of bookRentals;let i = index" style="margin:20px 0px">
+      <nz-card nzHoverable style="width:240px" [nzCover]="coverTemplate" [nzActions]="[actionEdit,actionDelete]">
+        <nz-card-meta [nzTitle]="bookRental.book.name" [nzDescription]="bookRental.expire | date"></nz-card-meta>
+      </nz-card>
+      <ng-template #coverTemplate>
+        <img [src]="bookRental.book.imagePath" height="350px" />
+      </ng-template>
+      <ng-template #actionDelete>
+        <button nz-button nzType="primary" (click)="deleteBookRental(i)">Delete</button>
+      </ng-template>
+      <ng-template #actionEdit>
+        <app-date-picker [book]="bookRental.book" content="Edit"></app-date-picker>
+      </ng-template>
     </div>
-    <button nz-button nzType="primary" (click)="showModal()">Check Out</button> 
-    <nz-modal [(nzVisible)]="isVisible" [nzTitle]="tplTitle" (nzOnCancel)="handleModalCancel()" (nzOnOk)="handleModalOk()">
-        <form nz-form #f="ngForm">
-          <nz-form-item>
-            <nz-form-label [nzSpan]="6" nzFor="email">E-mail</nz-form-label>
-            <nz-form-control [nzSpan]="14">
-              <input nz-input name="email" type="email" ngModel required />
-            </nz-form-control>
-          </nz-form-item>
-          <nz-form-item>
-            <nz-form-label [nzSpan]="6" nzFor="address">Address</nz-form-label>
-            <nz-form-control [nzSpan]="14">
-              <input nz-input name="address" type="text" ngModel required />
-            </nz-form-control>
-          </nz-form-item>
-          <nz-form-item>
-            <nz-form-label [nzSpan]="6" nzFor="card">Card Number</nz-form-label>
-            <nz-form-control [nzSpan]="14">
-              <input nz-input name="card" type="number" ngModel required minlength="12" maxlength="12"/>
-            </nz-form-control>
-          </nz-form-item>
-          <nz-form-item>
-            <nz-form-label [nzSpan]="6" nzFor="cvv">CVV</nz-form-label>
-            <nz-form-control [nzSpan]="14">
-              <input nz-input name="cvv" type="number" ngModel minlength="3" maxlength="3" required />
-            </nz-form-control>
-          </nz-form-item>
-        </form>
-        <ng-template #tplTitle>
-          <span>Total Price : <strong>{{totalPrice}}$</strong></span>
-        </ng-template>
-    </nz-modal>
+  </div>
+  <!-- Modal with Form to check out  -->
+  <nz-modal [(nzVisible)]="isVisible" [nzTitle]="tplTitle" (nzOnCancel)="handleModalCancel()"
+    (nzOnOk)="handleModalOk()">
+    <form nz-form #f="ngForm">
+      <nz-form-item>
+        <nz-form-label [nzSpan]="6" nzFor="email">E-mail</nz-form-label>
+        <nz-form-control [nzSpan]="14">
+          <input nz-input name="email" type="email" ngModel required />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="6" nzFor="address">Address</nz-form-label>
+        <nz-form-control [nzSpan]="14">
+          <input nz-input name="address" type="text" ngModel required />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="6" nzFor="card">Card Number</nz-form-label>
+        <nz-form-control [nzSpan]="14">
+          <input nz-input name="card" type="number" ngModel required minlength="12" maxlength="12" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="6" nzFor="cvv">CVV</nz-form-label>
+        <nz-form-control [nzSpan]="14">
+          <input nz-input name="cvv" type="number" ngModel minlength="3" maxlength="3" required />
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+    <ng-template #tplTitle>
+      <span>Total Price : <strong>{{totalPrice}}$</strong></span>
+    </ng-template>
+  </nz-modal>
 </div>
-
-

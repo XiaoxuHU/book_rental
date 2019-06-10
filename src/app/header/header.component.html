@@ -1,3 +1,8 @@
-<div>
-  <app-search></app-search>
+<div style="display: flex;flex-direction: row;">
+  <div style="height:64px;flex:3"><app-search></app-search></div>
+  <ul nz-menu [nzTheme]="'dark'" [nzMode]="'horizontal'" style="flex:2;line-height: 64px;">
+      <li nz-menu-item routerLink="/shopping-list" style="font-size: 18px">Shopping List</li>
+  </ul>
 </div>
+
+
