@@ -18,17 +18,15 @@
     </div>
     <!-- rates -->
     <div nz-col nzSpan="6">
-      <app-rates [rates]="book.rates"></app-rates>
+      <app-rates></app-rates>
       <nz-divider style="background-color: black" nzDashed="true"></nz-divider>
       <div>
         <label style="font-size: 18px">Rate Me:</label>
-        <nz-rate [(ngModel)]="rate" (click)="clickHandle()"></nz-rate>
+        <nz-rate [(ngModel)]="rate" (click)="clickRateHandle()" [nzDisabled]="isRated"></nz-rate>
         <div>
           <app-date-picker [book]="book" content="Borrow Me"></app-date-picker>
         </div>
       </div>
     </div>
   </div>
-
-
 </div>

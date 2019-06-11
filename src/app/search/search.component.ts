@@ -17,7 +17,6 @@ export class SearchComponent implements OnInit {
 
   clickHandler() {  
     this.bookService.searchBooks(this.query);
-    this.query = "";
     this.route.navigate(["/search"]);
   }
   ngOnInit() {

@@ -21,7 +21,8 @@ export class BookService{
     getBook(id:number):void{
         const url = this.base_url + `/${id}`
         this.http.get<Book>(url)
-                    .toPromise().then(data => this.bookChange.next(data));
+                    .toPromise().then(data => {
+                        this.bookChange.next(data)});
     }
     
     //query books starts with query string
@@ -31,10 +32,4 @@ export class BookService{
             .toPromise().then(data => this.queryBooksChange.next(...[data]));
     }
 
-    updateRate(rate:number,book:Book):void{
-        let rates = [...book.rates];
-        rates[rate - 1] = +rates[rate - 1] + 1;
-        book.rates = rates;
-        this.bookChange.next(book);
-    }
 }

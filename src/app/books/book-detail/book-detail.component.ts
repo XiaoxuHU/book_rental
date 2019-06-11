@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Book } from '../book.model';
 import { BookService } from '../book.service';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
+import { RateService } from '../../shared/rates/rates.service';
 
 @Component({
   selector: 'app-book-detail',
@@ -14,13 +15,16 @@ export class BookDetailComponent implements OnInit {
   book:Book;
   cardTitle: string = "";
   id:number = null;
+  isRated:boolean = false;
   constructor(
     private bookService:BookService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private rateService:RateService,
   ) {}
   
-  clickHandle() {
-    this.bookService.updateRate(this.rate,this.book);
+  clickRateHandle() {
+    this.isRated = true;
+    this.rateService.updateRate(this.rate);
   }
   ngOnInit() {
     this.id = +this.route.snapshot.paramMap.get("id");
@@ -28,6 +32,6 @@ export class BookDetailComponent implements OnInit {
     this.bookService.bookChange.subscribe(data => {
       this.book = data;
       this.cardTitle = `Written By ${data.author}`;
-    });
+    }); 
   }
 }
